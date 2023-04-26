@@ -3,7 +3,12 @@ from django.db import models
 
 from customers.models import Client
 
-USER_ROLES = [('Admin', 'Admin'), ('Staff', 'Staff')]
+USER_ROLES = [
+    ('Admin', 'Admin'), 
+    ('Staff', 'Staff'),
+    ('Driver', 'Driver'),
+    ('Tout', 'Tout'),
+    ]
 
 
 # Define a custom user manager
@@ -39,9 +44,16 @@ class UserAccount(AbstractUser):
     USERNAME_FIELD = 'email'
 
 
-    REQUIRED_FIELDS = ['first_name', 'last_name',]
+    REQUIRED_FIELDS = []
 
     objects = UserAccountManager()
 
     class Meta:
         ordering = ['-date_joined']
+
+
+class Staff(models.Model):
+    pass
+
+class Role(models.Model):
+    pass
